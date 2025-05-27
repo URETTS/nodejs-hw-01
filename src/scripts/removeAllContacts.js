@@ -3,7 +3,8 @@ import { PATH_DB } from '../constants/contacts.js';
 
 export const removeAllContacts = async () => {
         try {
-            await fs.unlink(PATH_DB, 'utf-8');
+            const emptyArray = [];
+    await fs.writeFile(PATH_DB, JSON.stringify(emptyArray, null, 2), 'utf-8');
             console.log('Файл успішно видалено.');
         } catch (err) {
             console.error('Помилка видалення файлу:', err);
